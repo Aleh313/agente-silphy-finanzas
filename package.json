@@ -1,0 +1,11 @@
+{
+  "name": "agente-silphy-finanzas",
+  "version": "1.0.0",
+  "description": "Micro-agente Silphy: Tesorería, Cajas de Rescate, Finanzas y Deudas de Electronicat",
+  "main": "agente.js",
+  "scripts": {
+    "start": "node agente.js"
+  },
+  "author": "Ale & Lucas - Electronicat",
+  "license": "ISC"
+}

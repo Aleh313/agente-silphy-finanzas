@@ -1,0 +1,49 @@
+{
+  "agentId": "ag_silphy",
+  "folderName": "03_silphy_contable",
+  "learnedKnowledge": [
+    "Administra caja, vencimientos críticos (Luz 1/Nov, Antonella 7/Nov), cobros de clubes y reparto Normal/Rescate."
+  ],
+  "customBotEntry": "agente.js",
+  "systemPromptFile": "PROMPT_ENTRENAMIENTO.md",
+  "role": "Líder Contable, Finanzas & Tesorería",
+  "name": "Silphy (Sylphiette)",
+  "lastUpdated": "29/10/2026, 03:05:13",
+  "watchPaths": [
+    "c:\\Users\\aleh3\\Desktop\\PROYECTO ELECTRONICAT\\agentes\\03_silphy_contable\\recursos_y_videos",
+    "c:\\Users\\aleh3\\Desktop\\PROYECTO ELECTRONICAT\\media_taller"
+  ],
+  "alwaysOn24x7": true,
+  "sector": "admin",
+  "skills": [
+    {
+      "id": "finance-billing-ops",
+      "name": "Operaciones Contables & Facturación",
+      "desc": "Conciliación bancaria, cobros y libro diario de transferencias."
+    },
+    {
+      "id": "finances",
+      "name": "Matemática Financiera & Runway",
+      "desc": "Cálculo de caja disponible, pasivo mensual y cobertura de vencimientos."
+    },
+    {
+      "id": "wshobson/agents@signed-audit-trails-recipe",
+      "name": "Pistas de Auditoría Firmadas",
+      "desc": "Registro inmutable de cada cobro entrante y pago saliente de la empresa."
+    }
+  ],
+  "peers": [
+    "ag_rudy",
+    "ag_roxy",
+    "ag_linia_pursena",
+    "ag_aisha_ale",
+    "ag_aisha_lucas"
+  ],
+  "responsibilities": [
+    "Auditar la caja diaria de Electrónicat ($80.000 actual).",
+    "Ejecutar pagos de deudas críticas (Luz, Antonella, Tarjetas) contra saldo disponible.",
+    "Calcular el reparto por cubos (30% socios, deuda, operación, patrimonio, inversiones).",
+    "Liquidar y notificar retiros de socios a Ale y Lucas."
+  ],
+  "skillsFile": "SKILLS.md"
+}

@@ -1,0 +1,223 @@
+{
+  "_agent": "03_silphy_contable",
+  "createdAt": "2026-11-10T19:46:41.710Z",
+  "systemInfo": {
+    "owner": "Ale & Lucas",
+    "company": "Electronicat"
+  },
+  "debts": [
+    {
+      "id": "debt_luz",
+      "creditor": "Boleta de Luz (Taller - Adelantado por Papá de Ale)",
+      "category": "⚡ Préstamo Familiar (Luz Taller)",
+      "totalAmount": 150000,
+      "monthlyQuota": 150000,
+      "dueDate": "Prioridad Alta",
+      "actionRequired": "Reintegrar a papá de Ale con fondos entrantes (pendiente tras cobro de Juventud)",
+      "paidThisMonth": false
+    },
+    {
+      "id": "debt_antonella",
+      "creditor": "Prestamista Antonella",
+      "category": "🤝 Prestamista (Cuota 2 Pagada)",
+      "totalAmount": 140000,
+      "monthlyQuota": 50000,
+      "dueDate": "Cuota 2 cancelada (Fondos Citi Pádel) · Cuota 3 en curso",
+      "actionRequired": "Cuota 2 saldada con cobro de Citi Pádel. Saldar resto con cobro de Montmartre",
+      "paidThisMonth": true
+    },
+    {
+      "id": "debt_kiosko",
+      "creditor": "Kiosko",
+      "category": "🏪 Pago Único",
+      "totalAmount": 0,
+      "monthlyQuota": 8000,
+      "dueDate": "Inmediato",
+      "actionRequired": "Cancelado",
+      "paidThisMonth": true
+    },
+    {
+      "id": "debt_zapatillas_san_juan",
+      "creditor": "ZAPATILLAS SAN JUAN",
+      "category": "👟 Compra en Cuotas (Fijo)",
+      "totalAmount": 140000,
+      "monthlyQuota": 70000,
+      "dueDate": "Cuota 1: 10/Nov ($70k) · Cuota 2: 10/Dic ($70k)",
+      "actionRequired": "Abonar cuota 1 de $70.000 antes del 10 de noviembre y cuota 2 el 10 de diciembre",
+      "paidThisMonth": false
+    },
+    {
+      "id": "debt_casa",
+      "creditor": "Cuentas Casa (Aporte Mensual)",
+      "category": "🏠 Costo de Vida Fijo",
+      "totalAmount": 400000,
+      "monthlyQuota": 400000,
+      "dueDate": "Mensual",
+      "actionRequired": "Sale del Fondo Socios (Ale 50% / Lucas 50%)",
+      "paidThisMonth": false
+    },
+    {
+      "id": "debt_internet",
+      "creditor": "Internet Taller",
+      "category": "🌐 Operación Fija",
+      "totalAmount": 50000,
+      "monthlyQuota": 50000,
+      "dueDate": "Mensual",
+      "actionRequired": "Sale del Fondo Empresa / Operación",
+      "paidThisMonth": false
+    },
+    {
+      "id": "debt_agentes",
+      "creditor": "Agentes IA & Servidores",
+      "category": "🤖 Operación Fija",
+      "totalAmount": 50000,
+      "monthlyQuota": 50000,
+      "dueDate": "Mensual",
+      "actionRequired": "Tope mensual de servidores/APIs que sale de Operación",
+      "paidThisMonth": false
+    },
+    {
+      "id": "debt_monotributo",
+      "creditor": "ARCA / ANSES (Monotributo)",
+      "category": "📄 Fiscal / Facturación",
+      "totalAmount": 242812.7,
+      "monthlyQuota": 53474.91,
+      "dueDate": "Cuota 2: 16/Nov (.475)",
+      "actionRequired": "Plan W685609 activo (7 cuotas). Deuda restante de plan caduco V621459 se cancela vía VEP para levantar baja de oficio",
+      "paidThisMonth": false,
+      "notes": "Plan W685609 vigente por .324 en 7 cuotas de .475. Pendiente anterior: .812 para levantar baja."
+    },
+    {
+      "id": "debt_mp",
+      "creditor": "Mercado Pago",
+      "category": "🏦 Refinanciación Bancaria (Acuerdo Activo)",
+      "totalAmount": 1268867.88,
+      "monthlyQuota": 35246.33,
+      "dueDate": "24 de cada mes (Vto Cuota 1 de 36: 24/Nov)",
+      "actionRequired": "Acuerdo al día: 36 cuotas de $35.246,33. Mantener saldo antes del 24/Nov para débito automático.",
+      "paidThisMonth": false,
+      "notes": "Acuerdo oficial consolidado: Préstamo Personal ($100.041,88) + Dinero Plus ($365.535,35) + Préstamo de tu línea ($80.865,75). Si se rompe el acuerdo la deuda escala a $1.280.768,41 por atrasos."
+    },
+    {
+      "id": "debt_macro",
+      "creditor": "Banco Macro",
+      "category": "🏦 Refinanciación Bancaria",
+      "totalAmount": 1924998.72,
+      "monthlyQuota": 0,
+      "dueDate": "En gestión",
+      "actionRequired": "Averiguar monto final con quita de intereses y opciones de cuotas largas",
+      "paidThisMonth": false,
+      "notes": "Estudio externo de cobranzas Macro (Tel: 0810-345-0055). Ofrecen cancelar con quita de intereses o contactar asesor. No pagar nada de contado ahora."
+    },
+    {
+      "id": "debt_credicuotas",
+      "creditor": "Credicuotas",
+      "category": "🏦 Refinanciación Financiera",
+      "totalAmount": 2000000,
+      "monthlyQuota": 0,
+      "dueDate": "En gestión",
+      "actionRequired": "Llamar para refinanciar saldo > $2.000.000",
+      "paidThisMonth": false
+    }
+  ],
+  "finances": {
+    "rescueMode": true,
+    "cashAvailable": 108600,
+    "monthlyIncome": 160000,
+    "directCosts": 24000,
+    "percentagesNormal": {
+      "operacion": 30,
+      "socios": 30,
+      "patrimonio": 25,
+      "inversiones": 15
+    },
+    "percentagesRescue": {
+      "deuda": 30,
+      "operacion": 25,
+      "socios": 30,
+      "patrimonio": 10,
+      "inversiones": 5
+    }
+  },
+  "transfers": [
+    {
+      "id": "tx_1793207923292_1",
+      "date": "2026-10-28",
+      "type": "ingreso",
+      "amount": 50000,
+      "client": "Citi Pádel Club",
+      "concept": "Mantenimiento eléctrico: cambio de reflector",
+      "destination": "Cuenta Empresa"
+    },
+    {
+      "id": "tx_1793207923292_2",
+      "date": "2026-10-28",
+      "type": "ingreso",
+      "amount": 30000,
+      "client": "Diario El Ancasti",
+      "concept": "Adelanto compra de repuestos (reparación 2 ventiladores de pie)",
+      "destination": "Cuenta Empresa"
+    },
+    {
+      "id": "tx_1793336045237_1",
+      "date": "2026-10-30",
+      "type": "egreso",
+      "amount": 8000,
+      "client": "Kiosko",
+      "concept": "Pago cancelación deuda de Kiosko (Gasto menor taller)",
+      "destination": "Kiosko"
+    },
+    {
+      "id": "tx_1793336045237_2",
+      "date": "2026-10-30",
+      "type": "egreso",
+      "amount": 24000,
+      "client": "Diario El Ancasti",
+      "concept": "Compra de rodamientos para reparación de 2 ventiladores de pie",
+      "destination": "Repuestos / Proveedor Taller"
+    },
+    {
+      "id": "tx_1793336045237_3",
+      "date": "2026-10-30",
+      "type": "egreso",
+      "amount": 13400,
+      "client": "Socios (Ale & Lucas)",
+      "concept": "Retiro / Pago a socios (.400 total)",
+      "destination": "Cuentas Personales Socios"
+    },
+    {
+      "id": "tx_1793435950535",
+      "date": "2026-10-31",
+      "type": "egreso",
+      "amount": 6000,
+      "client": "Estación de Servicio / Combustible Moto",
+      "concept": "[OPERACION] Carga de combustible moto de la empresa (salidas y traslados de taller/campo)",
+      "destination": "Fondo Operación & Taller"
+    },
+    {
+      "id": "tx_juventud_80k",
+      "date": "2026-10-31",
+      "type": "ingreso",
+      "amount": 80000,
+      "client": "Deportivo Juventud (Básquet y Vóley)",
+      "concept": "Cobro de trabajo ya entregado (.000 acreditados)",
+      "destination": "Cuenta Empresa / Caja"
+    }
+  ],
+  "receivables": [
+    {
+      "id": "rec_molmatre_750k",
+      "clientName": "Montmartre (Molmatre)",
+      "concept": "Cobro pendiente de Tanteador y Tablero 24s (A la espera esta semana)",
+      "amount": 750000,
+      "date": "Semana en curso (Nov 2026)"
+    },
+    {
+      "id": "rec_ancasti_60k",
+      "clientName": "Diario El Ancasti",
+      "concept": "Saldo final contra entrega de 2 ventiladores reparados (Presupuesto  -  adelanto)",
+      "amount": 60000,
+      "date": "Contra entrega"
+    }
+  ]
+}
