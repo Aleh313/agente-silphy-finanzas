@@ -111,13 +111,14 @@
     },
     {
       "id": "debt_credicuotas",
-      "creditor": "Credicuotas",
-      "category": "🏦 Refinanciación Financiera",
+      "creditor": "Credicuotas (Estudio Latam Collect)",
+      "category": "🏦 Refinanciación Financiera (En Gestión)",
       "totalAmount": 2000000,
       "monthlyQuota": 0,
-      "dueDate": "En gestión",
-      "actionRequired": "Llamar para refinanciar saldo > $2.000.000",
-      "paidThisMonth": false
+      "dueDate": "Sin comunicación desde Septiembre",
+      "actionRequired": "Contactar al estudio Latam Collect (mlmengassini@latamcollect.com.ar / Tel 011 52794675) para solicitar liquidación con quita o plan en cuotas bajas",
+      "paidThisMonth": false,
+      "notes": "Intimación prejudicial de Latam Collect a nombre de Lucas Yoel Heredia. Amenazan con cobro ejecutivo / bloqueo de cuentas. Responder manifestando voluntad de pago para frenar acciones y pedir plan accesible."
     }
   ],
   "finances": {
