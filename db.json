@@ -82,10 +82,10 @@
       "category": "📄 Fiscal / Facturación",
       "totalAmount": 242812.7,
       "monthlyQuota": 53474.91,
-      "dueDate": "Cuota 2: 16/Nov (.475)",
+      "dueDate": "Cuota 2: 16/Nov ($53.475)",
       "actionRequired": "Plan W685609 activo (7 cuotas). Deuda restante de plan caduco V621459 se cancela vía VEP para levantar baja de oficio",
       "paidThisMonth": false,
-      "notes": "Plan W685609 vigente por .324 en 7 cuotas de .475. Pendiente anterior: .812 para levantar baja."
+      "notes": "Plan W685609 vigente por $374.324 en 7 cuotas de $53.475. Pendiente anterior: $242.812 para levantar baja."
     },
     {
       "id": "debt_mp",
@@ -100,14 +100,14 @@
     },
     {
       "id": "debt_macro",
-      "creditor": "Banco Macro",
-      "category": "🏦 Refinanciación Bancaria",
-      "totalAmount": 1924998.72,
+      "creditor": "Banco Macro (Estudio RC Collecting)",
+      "category": "🏦 Refinanciación Bancaria (En Negociación)",
+      "totalAmount": 2062156.58,
       "monthlyQuota": 0,
-      "dueDate": "En gestión",
-      "actionRequired": "Averiguar monto final con quita de intereses y opciones de cuotas largas",
+      "dueDate": "En negociación con estudio",
+      "actionRequired": "Rechazar 3 cuotas. Exigir plan largo (18 a 36 cuotas) con cuota accesible o quita agresiva de contado a futuro",
       "paidThisMonth": false,
-      "notes": "Estudio externo de cobranzas Macro (Tel: 0810-345-0055). Ofrecen cancelar con quita de intereses o contactar asesor. No pagar nada de contado ahora."
+      "notes": "Estudio RC Collecting reclama $2.062.156,58. Ofrecen quita o 3 cuotas fijas (inviable: ~$687k/mes). Negociar cuotas largas como se hizo con Mercado Pago."
     },
     {
       "id": "debt_credicuotas",
@@ -122,7 +122,7 @@
   ],
   "finances": {
     "rescueMode": true,
-    "cashAvailable": 108600,
+    "cashAvailable": 138600,
     "monthlyIncome": 160000,
     "directCosts": 24000,
     "percentagesNormal": {
@@ -182,7 +182,7 @@
       "type": "egreso",
       "amount": 13400,
       "client": "Socios (Ale & Lucas)",
-      "concept": "Retiro / Pago a socios (.400 total)",
+      "concept": "Retiro / Pago a socios ($13.400 total)",
       "destination": "Cuentas Personales Socios"
     },
     {
@@ -200,7 +200,16 @@
       "type": "ingreso",
       "amount": 80000,
       "client": "Deportivo Juventud (Básquet y Vóley)",
-      "concept": "Cobro de trabajo ya entregado (.000 acreditados)",
+      "concept": "Cobro de trabajo ya entregado ($80.000 acreditados)",
+      "destination": "Cuenta Empresa / Caja"
+    },
+    {
+      "id": "tx_1794342088466",
+      "date": "2026-11-10",
+      "type": "ingreso",
+      "amount": 30000,
+      "client": "Diario El Ancasti",
+      "concept": "Cobro parcial por retiro de 1 ventilador (saldo restante: $30.000)",
       "destination": "Cuenta Empresa / Caja"
     }
   ],
@@ -215,9 +224,9 @@
     {
       "id": "rec_ancasti_60k",
       "clientName": "Diario El Ancasti",
-      "concept": "Saldo final contra entrega de 2 ventiladores reparados (Presupuesto  -  adelanto)",
-      "amount": 60000,
-      "date": "Contra entrega"
+      "concept": "Saldo restante contra entrega del 2do ventilador reparado",
+      "amount": 30000,
+      "date": "Contra entrega 2do ventilador"
     }
   ]
 }
