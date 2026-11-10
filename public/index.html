@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electronicat | Finanzas, Balances & Silphy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HEADER & NAVEGACIÓN SUPERIOR -->
+  <header class="app-topbar">
+    <div class="topbar-brand">
+      <div class="logo-box">⚡</div>
+      <div>
+        <h1 class="brand-title">ELECTRONICAT <span class="brand-pill">Finanzas & Balances</span></h1>
+        <p class="brand-sub">Sistema Contable & Taller Central Catamarca</p>
+      </div>
+    </div>
+
+    <!-- PESTAÑAS DE NAVEGACIÓN PRINCIPALES -->
+    <nav class="nav-tabs" aria-label="Secciones del Sistema">
+      <button class="nav-tab active" data-view="view-balances">
+        <span class="tab-icon">📊</span> Resumen & Balances
+      </button>
+      <button class="nav-tab" data-view="view-pagos">
+        <span class="tab-icon">💳</span> Ventana de Pagos
+      </button>
+      <button class="nav-tab" data-view="view-graficos">
+        <span class="tab-icon">📈</span> Proyecciones & Gráficos
+      </button>
+      <button class="nav-tab" data-view="view-actividades">
+        <span class="tab-icon">📑</span> Actividades Económicas
+      </button>
+      <button class="nav-tab" data-view="view-deudas">
+        <span class="tab-icon">💼</span> Deudas & Cobranzas
+      </button>
+    </nav>
+
+    <!-- ACCIONES RÁPIDAS -->
+    <div class="topbar-actions">
+      <span class="rescue-tag" id="top-rescue-tag">🛡️ Modo Rescate Activo</span>
+      <select id="user-select" class="user-dropdown" title="Usuario activo">
+        <option value="Ale" selected>👤 Ale (Líder Taller)</option>
+        <option value="Lucas">👤 Lucas (Socio)</option>
+      </select>
+      <button class="btn-primary" id="btn-open-modal">
+        <span>➕</span> Cargar Movimiento Semanal
+      </button>
+    </div>
+  </header>
+
+  <!-- TIRA DE DIRECTIVAS DEL CEO (RUDY GREYRAT) -->
+  <aside id="ceo-directive-strip" class="ceo-directive-strip" style="display: none;" aria-label="Directiva del CEO">
+    <div class="directive-strip-content">
+      <span class="directive-icon">👔</span>
+      <div class="directive-text-wrap">
+        <strong>Directiva de Rudy (CEO):</strong>
+        <span id="ceo-directive-text">Cargando...</span>
+      </div>
+    </div>
+    <span class="directive-badge" id="ceo-directive-status">Activa</span>
+  </aside>
+
+  <!-- CONTENEDOR DE PANTALLAS -->
+  <main class="main-content">
+    
+    <!-- ==============================================
+         VISTA 1: RESUMEN & BALANCES
+         ============================================== -->
+    <section id="view-balances" class="view-section active">
+      <!-- TARJETAS KPI -->
+      <div class="kpi-grid">
+        <div class="kpi-card cash">
+          <div class="kpi-header">
+            <span class="kpi-label">CAJA DISPONIBLE</span>
+            <span class="kpi-icon">💰</span>
+          </div>
+          <div class="kpi-value" id="kpi-cash">$0 ARS</div>
+          <p class="kpi-foot">Liquidez real en cuenta empresa</p>
+        </div>
+
+        <div class="kpi-card receivables">
+          <div class="kpi-header">
+            <span class="kpi-label">POR COBRAR</span>
+            <span class="kpi-icon">⏳</span>
+          </div>
+          <div class="kpi-value" id="kpi-receivables">$0 ARS</div>
+          <p class="kpi-foot" id="kpi-receivables-count">Clubes y clientes en espera</p>
+        </div>
+
+        <div class="kpi-card expenses">
+          <div class="kpi-header">
+            <span class="kpi-label">EGRESOS REGISTRADOS</span>
+            <span class="kpi-icon">💸</span>
+          </div>
+          <div class="kpi-value" id="kpi-expenses">$0 ARS</div>
+          <p class="kpi-foot">Repuestos, insumos y pagos</p>
+        </div>
+
+        <div class="kpi-card urgent">
+          <div class="kpi-header">
+            <span class="kpi-label">DEUDA CRÍTICA</span>
+            <span class="kpi-icon">⚡</span>
+          </div>
+          <div class="kpi-value" id="kpi-urgent-debt">$0 ARS</div>
+          <p class="kpi-foot" id="kpi-urgent-hint">Prioridad inmediata de rescate</p>
+        </div>
+      </div>
+
+      <!-- ARQUITECTURA DE CUBOS (PROFIT FIRST) Y RESUMEN -->
+      <div class="dashboard-grid">
+        <!-- Panel 5 Cubos -->
+        <div class="dash-panel buckets-panel">
+          <div class="panel-header">
+            <h3>📊 Distribución en 5 Cubos (Profit First)</h3>
+            <span class="panel-badge green" id="cubos-total-income-badge">Ingresos Mes: $0 ARS</span>
+          </div>
+          <p class="panel-desc" id="cubos-panel-desc">Calculado sobre el total ingresado en el mes antes de salidas operativas para blindar el taller de quiebras:</p>
+
+          <div class="bucket-bars-container">
+            <div class="bucket-bar-row">
+              <div class="bar-info">
+                <span>💳 1° Deuda Urgente (30%)</span>
+                <strong id="bar-val-deuda">$0</strong>
+              </div>
+              <div class="bar-track"><div class="bar-fill b-deuda" style="width: 30%"></div></div>
+            </div>
+
+            <div class="bucket-bar-row">
+              <div class="bar-info">
+                <span>🛠️ 2° Insumos y Operación Taller (25%)</span>
+                <strong id="bar-val-operacion">$0</strong>
+              </div>
+              <div class="bar-track"><div class="bar-fill b-operacion" style="width: 25%"></div></div>
+            </div>
+
+            <div class="bucket-bar-row">
+              <div class="bar-info">
+                <span>👥 3° Retiro de Socios Ale & Lucas (30%)</span>
+                <strong id="bar-val-socios">$0</strong>
+              </div>
+              <div class="bar-track"><div class="bar-fill b-socios" style="width: 30%"></div></div>
+            </div>
+
+            <div class="bucket-bar-row">
+              <div class="bar-info">
+                <span>🏛️ 4° Patrimonio Empresa (10%)</span>
+                <strong id="bar-val-patrimonio">$0</strong>
+              </div>
+              <div class="bar-track"><div class="bar-fill b-patrimonio" style="width: 10%"></div></div>
+            </div>
+
+            <div class="bucket-bar-row">
+              <div class="bar-info">
+                <span>🚀 5° Inversión / Expansión (5%)</span>
+                <strong id="bar-val-inversion">$0</strong>
+              </div>
+              <div class="bar-track"><div class="bar-fill b-inversion" style="width: 5%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Compromisos Inmediatos -->
+        <div class="dash-panel commitments-panel">
+          <div class="panel-header">
+            <h3>⚡ Próximos Vencimientos Inmediatos</h3>
+            <button class="btn-link" id="btn-go-pagos">Ir a Ventana de Pagos →</button>
+          </div>
+          <div class="urgent-list" id="urgent-debts-list">
+            <!-- Dinámico -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         VISTA 2: VENTANA DE PAGOS (NUEVA)
+         ============================================== -->
+    <section id="view-pagos" class="view-section">
+      <div class="payments-topbar">
+        <div>
+          <h2>💳 Ventana de Pagos & Compromisos de Electronicat</h2>
+          <p class="section-subtitle">Gestión centralizada de pagos a acreedores, servicios y cuotas con liquidación en 1 clic</p>
+        </div>
+        <div class="payments-coverage-box">
+          <div class="coverage-stat">
+            <span>Caja Disponible:</span>
+            <strong class="green" id="pay-cash-available">$0 ARS</strong>
+          </div>
+          <div class="coverage-stat">
+            <span>Compromisos del Mes:</span>
+            <strong class="amber" id="pay-month-needed">$0 ARS</strong>
+          </div>
+          <div class="coverage-badge" id="pay-coverage-status">
+            <span>Semáforo:</span> <strong>Calculando...</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- MATRIZ DE TARJETAS DE PAGO -->
+      <div class="payments-grid" id="payments-cards-container">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+    <!-- ==============================================
+         VISTA 3: PROYECCIONES & GRÁFICOS (NUEVA)
+         ============================================== -->
+    <section id="view-graficos" class="view-section">
+      <div class="charts-top-strip">
+        <!-- Runway / Pista de Vida -->
+        <div class="stat-box runway">
+          <span class="box-icon">⏳</span>
+          <div>
+            <span class="box-label">PISTA DE SUPERVIVENCIA (RUNWAY)</span>
+            <strong class="box-value" id="chart-runway-days">-- Días</strong>
+            <p class="box-sub" id="chart-runway-sub">Autonomía de caja actual</p>
+          </div>
+        </div>
+
+        <!-- Radar de Fugas Hormiga -->
+        <div class="stat-box leak">
+          <span class="box-icon">🐜</span>
+          <div>
+            <span class="box-label">RADAR DE MICRO-PÉRDIDAS</span>
+            <strong class="box-value" id="chart-micro-losses">$0 ARS</strong>
+            <p class="box-sub" id="chart-micro-count">0 gastos menores detectados</p>
+          </div>
+        </div>
+
+        <!-- Punto de Equilibrio (Quit Number) -->
+        <div class="stat-box target">
+          <span class="box-icon">🎯</span>
+          <div>
+            <span class="box-label">PUNTO DE EQUILIBRIO MENSUAL</span>
+            <strong class="box-value" id="chart-breakeven">$0 ARS</strong>
+            <p class="box-sub">Para cubrir taller y vida sin deudas</p>
+          </div>
+        </div>
+
+        <!-- Proyección Neta a 30 Días -->
+        <div class="stat-box forecast">
+          <span class="box-icon">📈</span>
+          <div>
+            <span class="box-label">RESULTADO NETO PROYECTADO</span>
+            <strong class="box-value" id="chart-net-forecast">$0 ARS</strong>
+            <p class="box-sub" id="chart-net-status">Tras cobro de clubes</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILA DE GRÁFICOS -->
+      <div class="charts-main-grid">
+        <!-- Gráfico 1: Comparativa Mensual Ingresos vs Egresos -->
+        <div class="chart-panel">
+          <div class="chart-header">
+            <h3>📊 Flujo del Mes: Ingresos vs. Egresos vs. Margen</h3>
+            <span class="panel-badge">Libro Diario Real</span>
+          </div>
+          <div class="chart-canvas-container" id="chart-bars-container">
+            <!-- SVG Dinámico -->
+          </div>
+          <div class="chart-legend">
+            <span class="legend-dot green"></span> Ingresos
+            <span class="legend-dot red"></span> Egresos
+            <span class="legend-dot sky"></span> Margen Libre
+          </div>
+        </div>
+
+        <!-- Gráfico 2: Radar de Micro-pérdidas & Distribución de Salidas -->
+        <div class="chart-panel">
+          <div class="chart-header">
+            <h3>🐜 Radar de Micro-Pérdidas & Fugas Hormiga</h3>
+            <span class="panel-badge amber">Auditoría Silphy</span>
+          </div>
+          <div class="donut-chart-layout">
+            <div class="donut-visual" id="donut-expenses-chart">
+              <div class="donut-center">
+                <span id="donut-leak-percent">0%</span>
+                <small>Fugas</small>
+              </div>
+            </div>
+            <div class="donut-breakdown" id="donut-breakdown-list">
+              <!-- Dinámico -->
+            </div>
+          </div>
+          <div class="silphy-advice-box" id="silphy-leak-advice">
+            <strong>💚 Consejo de Silphy:</strong>
+            <p>Auditoria en curso: revisando si hay gastos menores a $15.000 que desvíen la caja de los repuestos esenciales.</p>
+          </div>
+        </div>
+
+        <!-- Gráfico 3: Proyección de Caja a 30 Días (Forecast de Supervivencia) -->
+        <div class="chart-panel full-width">
+          <div class="chart-header">
+            <h3>📈 Proyección de Caja a 30 Días (Simulación de Supervivencia)</h3>
+            <span class="panel-badge green">Forecast Activo</span>
+          </div>
+          <p class="panel-desc">Evolución estimada de la caja si cobramos los hitos de Montmartre y liquidamos las cuotas prioritarias:</p>
+          <div class="forecast-timeline-container" id="forecast-timeline">
+            <!-- SVG Línea de Proyección -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         VISTA 4: ACTIVIDADES ECONÓMICAS (LIBRO DIARIO)
+         ============================================== -->
+    <section id="view-actividades" class="view-section">
+      <div class="activities-header">
+        <div>
+          <h2>📑 Libro Diario de Actividades Económicas</h2>
+          <p class="section-subtitle">Trazabilidad firmada de cada cobro, insumo, retiro y pago realizado en Electronicat</p>
+        </div>
+        <div class="activities-stats">
+          <div class="stat-pill"><span id="stat-total-movements">0</span> Movimientos</div>
+          <div class="stat-pill green">Ingresos: <strong id="stat-sum-income">$0</strong></div>
+          <div class="stat-pill red">Egresos: <strong id="stat-sum-expense">$0</strong></div>
+        </div>
+      </div>
+
+      <!-- BARRA DE FILTROS -->
+      <div class="filter-toolbar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="activities-search" placeholder="Buscar por cliente, proveedor, concepto...">
+        </div>
+        <div class="filter-chips">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="ingreso">💰 Ingresos</button>
+          <button class="filter-btn" data-filter="egreso">💸 Egresos / Repuestos</button>
+        </div>
+      </div>
+
+      <!-- TABLA DE MOVIMIENTOS -->
+      <div class="table-container">
+        <table class="activities-table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Cliente / Entidad</th>
+              <th>Concepto / Detalle</th>
+              <th>Destino / Cuenta</th>
+              <th class="text-right">Monto</th>
+            </tr>
+          </thead>
+          <tbody id="activities-tbody">
+            <!-- Dinámico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         VISTA 5: DEUDAS & COBRANZAS A DETALLE
+         ============================================== -->
+    <section id="view-deudas" class="view-section">
+      <div class="dual-columns">
+        <!-- Columna Izquierda: Cuentas por Cobrar -->
+        <div class="column-card">
+          <div class="card-head-line">
+            <div>
+              <h3>⏳ Cuentas por Cobrar a Clientes & Clubes</h3>
+              <p>Dinero en la calle pendiente de liquidar</p>
+            </div>
+            <strong class="total-badge green" id="sum-receivables-badge">$0</strong>
+          </div>
+          <div class="cards-stack" id="detailed-receivables-list">
+            <!-- Dinámico -->
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Matriz de Pasivos & Deudas -->
+        <div class="column-card">
+          <div class="card-head-line">
+            <div>
+              <h3>💼 Matriz Completa de Deudas & Refinanciaciones</h3>
+              <p>Clasificación según urgencia y tasa de interés</p>
+            </div>
+            <strong class="total-badge orange" id="sum-debts-badge">$0</strong>
+          </div>
+          <div class="cards-stack" id="detailed-debts-list">
+            <!-- Dinámico -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================
+       CHATBOT FLOTANTE ESTILO FACEBOOK / MESSENGER
+       ============================================== -->
+
+  <!-- 1. BURBUJA FLOTANTE (CHAT HEAD) -->
+  <aside class="silphy-chat-bubble-container" aria-label="Asistente Silphy">
+    <!-- Toast de Previsualización cuando está minimizado -->
+    <div class="silphy-preview-toast" id="silphy-preview-toast" style="display: none;">
+      <div class="toast-avatar">
+        <img src="silphy.webp" alt="Silphy">
+      </div>
+      <div class="toast-body">
+        <strong>Silphy te respondió:</strong>
+        <p id="toast-preview-text">...</p>
+      </div>
+      <button class="toast-close" id="btn-close-toast" title="Descartar vista previa">✕</button>
+    </div>
+
+    <!-- Burbuja Botón -->
+    <button class="silphy-bubble-btn" id="silphy-bubble-btn" onclick="window.toggleChatWindow && window.toggleChatWindow()" title="Abrir chat con Silphy (Asistente Contable)">
+      <img src="silphy.webp" alt="Silphy" class="bubble-avatar">
+      <span class="bubble-status-ring"></span>
+      <!-- Badge de Mensajes Pendientes -->
+      <span class="unread-badge" id="silphy-unread-badge" style="display: none;">0</span>
+    </button>
+  </aside>
+
+  <!-- 2. VENTANA FLOTANTE DEL CHAT (MESSENGER POPUP) -->
+  <section class="silphy-chat-window" id="silphy-chat-window">
+    <!-- CABECERA FLOTANTE -->
+    <div class="chat-win-header">
+      <div class="header-profile">
+        <div class="win-avatar-box">
+          <img src="silphy.webp" alt="Silphy">
+          <span class="online-dot"></span>
+        </div>
+        <div>
+          <h4>Silphy (Sylphiette)</h4>
+          <span class="win-sub">Líder Tesorería · En línea 24/7</span>
+        </div>
+      </div>
+
+      <div class="win-controls">
+        <button class="btn-win-icon" id="btn-toggle-voice" title="Activar/Desactivar voz en alta voz">
+          <span id="voice-icon">🔊</span>
+        </button>
+        <button class="btn-win-icon" id="btn-clear-chat" title="Limpiar historial de chat">
+          <span>🗑️</span>
+        </button>
+        <button class="btn-win-icon" id="btn-minimize-chat" onclick="window.closeChatWindow && window.closeChatWindow(true)" title="Minimizar ventana (queda en la burbuja)">─</button>
+        <button class="btn-win-icon" id="btn-close-chat" onclick="window.closeChatWindow && window.closeChatWindow(false)" title="Cerrar ventana">✕</button>
+      </div>
+    </div>
+
+    <!-- HILO DE CONVERSACIÓN -->
+    <div class="chat-win-body" id="chat-thread" aria-live="polite">
+      <div class="welcome-box target">
+        <p>¡Hola Ale! Estoy acá atenta a los números del taller. Contame qué cobraron, qué repuestos compraron o charlemos cualquier novedad de la semana 💚</p>
+        <div class="win-chips">
+          <button class="win-chip" data-prompt="Hola Silphy, ¿cómo estamos de caja hoy y qué deudas urgen pagar?">💰 ¿Cómo estamos de caja?</button>
+          <button class="win-chip" data-prompt="Silphy, ¿detectás alguna micro-pérdida o fuga de plata esta semana?">🐜 Auditar fugas hormiga</button>
+          <button class="win-chip" data-prompt="Mostrame el cálculo de reparto en los 5 cubos con la caja actual.">📊 Cubos de rescate</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BARRA DE ENTRADA -->
+    <form class="chat-win-footer" id="chat-form">
+      <button type="button" class="btn-mic" id="btn-mic" title="Hablar con micrófono">🎙️</button>
+      <textarea 
+        id="chat-input" 
+        placeholder="Charlá con Silphy... (Enter para enviar)" 
+        rows="1" 
+        required></textarea>
+      <button type="submit" class="btn-submit-chat" title="Enviar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </form>
+  </section>
+
+  <!-- ==============================================
+       MODAL DE CARGA SEMANAL GUIADA
+       ============================================== -->
+  <dialog id="modal-carga-semana" class="custom-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📝</span>
+          <div>
+            <h3>Cargar Movimiento de la Semana</h3>
+            <p>Registrá ingresos, compras de taller, cuotas pagadas o bitácora</p>
+          </div>
+        </div>
+        <button class="btn-close" id="btn-close-modal" aria-label="Cerrar modal">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="tab-ingreso">💰 Ingreso / Cobro</button>
+        <button class="tab-btn" data-tab="tab-egreso">💸 Gasto / Repuesto</button>
+        <button class="tab-btn" data-tab="tab-deuda">🤝 Pago de Deuda</button>
+        <button class="tab-btn" data-tab="tab-cobrar">⏳ Cuenta a Cobrar</button>
+      </div>
+
+      <form id="form-registro-semanal" class="modal-body">
+        <input type="hidden" id="form-type" value="ingreso">
+
+        <div class="form-group">
+          <label for="form-amount">Monto en Pesos ($ ARS)*</label>
+          <input type="number" id="form-amount" placeholder="Ej: 75000" min="1" step="any" required autofocus>
+        </div>
+
+        <div class="form-group" id="group-client">
+          <label for="form-client">Cliente / Proveedor / Destino*</label>
+          <input type="text" id="form-client" placeholder="Ej: Montmartre / Casa de Electrónica" required>
+        </div>
+
+        <div class="form-group" id="group-debt-select" style="display: none;">
+          <label for="form-debt-id">Seleccionar Compromiso o Deuda</label>
+          <select id="form-debt-id">
+            <option value="">Seleccione una deuda...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="form-concept">Concepto o Detalle del Trabajo / Gasto*</label>
+          <input type="text" id="form-concept" placeholder="Ej: Cobro tanteador / Compra de displays LED y estaño" required>
+        </div>
+
+        <div class="form-group">
+          <label for="form-note">Nota para la Memoria Semanal de Silphy (Opcional)</label>
+          <textarea id="form-note" rows="2" placeholder="Ej: Trabajo entregado con prueba en banco. Queda pendiente el 20% contra entrega final."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-modal">Cancelar</button>
+          <button type="submit" class="btn-primary" id="btn-submit-movement">Guardar en Finanzas</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- MODAL RÁPIDO DE PAGO DE DEUDA EN 1 CLIC -->
+  <dialog id="modal-pagar-deuda" class="custom-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>💳</span>
+          <div>
+            <h3>Confirmar Pago de Compromiso</h3>
+            <p id="modal-pay-debt-name">Acreedor</p>
+          </div>
+        </div>
+        <button class="btn-close" id="btn-close-pay-modal">✕</button>
+      </div>
+
+      <form id="form-confirm-pay" class="modal-body">
+        <input type="hidden" id="pay-modal-debt-id">
+        <div class="form-group">
+          <label for="pay-modal-amount">Monto a Abonar ($ ARS)</label>
+          <input type="number" id="pay-modal-amount" min="1" step="any" required>
+        </div>
+        <div class="form-group">
+          <label for="pay-modal-note">Nota u Observación (Opcional)</label>
+          <input type="text" id="pay-modal-note" placeholder="Ej: Transferencia desde cuenta empresa">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-pay-modal">Cancelar</button>
+          <button type="submit" class="btn-primary" id="btn-confirm-pay-submit">Confirmar Débito y Pago</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

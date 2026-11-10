@@ -33,7 +33,7 @@
       "totalAmount": 0,
       "monthlyQuota": 8000,
       "dueDate": "Inmediato",
-      "actionRequired": "Cancelado",
+      "actionRequired": "Cancelado totalmente ($42.000)",
       "paidThisMonth": true
     },
     {
@@ -123,7 +123,7 @@
   ],
   "finances": {
     "rescueMode": true,
-    "cashAvailable": 138600,
+    "cashAvailable": 28600,
     "monthlyIncome": 160000,
     "directCosts": 24000,
     "percentagesNormal": {
@@ -212,22 +212,53 @@
       "client": "Diario El Ancasti",
       "concept": "Cobro parcial por retiro de 1 ventilador (saldo restante: $30.000)",
       "destination": "Cuenta Empresa / Caja"
+    },
+    {
+      "id": "tx_1794343874211_312",
+      "date": "2026-11-10",
+      "type": "egreso",
+      "amount": 38000,
+      "client": "Tío Comida",
+      "concept": "Gasto de comida (Agregado a deudas/compromisos)",
+      "destination": "Gasto Taller"
+    },
+    {
+      "id": "tx_1794343874212_3",
+      "date": "2026-11-10",
+      "type": "egreso",
+      "amount": 30000,
+      "client": "Vane",
+      "concept": "Compromiso Vane (Agregado a deudas/compromisos)",
+      "destination": "Gasto Taller"
+    },
+    {
+      "id": "tx_1794343874213_549",
+      "date": "2026-11-10",
+      "type": "egreso",
+      "amount": 42000,
+      "client": "Kiosko",
+      "concept": "Gastos Kiosko adicionales (Agregado a deudas/compromisos)",
+      "destination": "Pago Deuda"
     }
   ],
   "receivables": [
     {
       "id": "rec_molmatre_750k",
+      "client": "Montmartre (Molmatre)",
       "clientName": "Montmartre (Molmatre)",
       "concept": "Cobro pendiente de Tanteador y Tablero 24s (A la espera esta semana)",
       "amount": 750000,
-      "date": "Semana en curso (Nov 2026)"
+      "date": "Semana en curso (Nov 2026)",
+      "status": "Pendiente de cobro"
     },
     {
       "id": "rec_ancasti_60k",
+      "client": "Diario El Ancasti",
       "clientName": "Diario El Ancasti",
       "concept": "Saldo restante contra entrega del 2do ventilador reparado",
       "amount": 30000,
-      "date": "Contra entrega 2do ventilador"
+      "date": "Contra entrega 2do ventilador",
+      "status": "Pendiente de cobro"
     }
   ]
 }

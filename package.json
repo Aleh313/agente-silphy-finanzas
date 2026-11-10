@@ -4,7 +4,9 @@
   "description": "Micro-agente Silphy: Tesorería, Cajas de Rescate, Finanzas y Deudas de Electronicat",
   "main": "agente.js",
   "scripts": {
-    "start": "node agente.js"
+    "start": "node server.js",
+    "agent": "node agente.js",
+    "chat": "node server.js"
   },
   "author": "Ale & Lucas - Electronicat",
   "license": "ISC"

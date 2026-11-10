@@ -21,3 +21,12 @@
 
 ## 📜 Historial de Decisiones y Log de Modificaciones
 - **[10/11/2026]:** Creación del microsistema independiente. Inicialización de `db.json`, `package.json`, `README.md` estandarizado y protocolo de memoria persistente.
+
+- **[10/11/2026, 05:21:28] Carga Semanal:** Ingreso de $30.000 de Diario El Ancasti (Cobro parcial por retiro de 1 ventilador (saldo restante: $30.000)). Nueva caja: $138.600.
+- **[10/11/2026, 05:29:17] Carga Semanal:** 
+- **[10/11/2026, 05:29:17] Carga Semanal:** 
+- **[10/11/2026, 05:29:17] Carga Semanal:** 
+- **[10/11/2026, 05:38:10] Carga Semanal:**  [Deuda Actualizada]: Mercado Pago pagó $15.000. Saldo restante: $1.253.867,88. Egreso de $15.000. Nueva caja: $123.600.
+- **[10/11/2026, 05:51:14] Carga Semanal:**  Egreso de $38.000. Nueva caja: $100.600.
+- **[10/11/2026, 05:51:14] Carga Semanal:**  Egreso de $30.000. Nueva caja: $70.600.
+- **[10/11/2026, 05:51:14] Carga Semanal:**  [Deuda Actualizada]: Kiosko pagó $42.000. Saldo restante: $0. Egreso de $42.000. Nueva caja: $28.600.

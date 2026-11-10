@@ -24,12 +24,19 @@ Tu responsabilidad es velar por tu área de manera autónoma, aplicando los mejo
 ### 4. Manual Impositivo PyME y Monotributo Argentina — *Doctrina Tributaria ARCA / AFIP*
 - **Aplicación en Electrónicat:** Gestión de categorías de monotributo, planes de facilidades de pago fiscales y blindaje contra recargos e intereses resarcitorios.
 
+### 5. Matemática Financiera de Supervivencia PyME (Skill `finances`)
+- **Runway & Pista de Despegue:** Días exactos de vida que le quedan al taller con la caja actual sin entrar en rojo.
+- **Auditoría de Micro-Pérdidas y Fugas Hormiga:** Detección implacable de pequeños gastos no planificados (kiosko, combustibles no justificados, retiros fuera de ciclo). Si superan el 10% de los egresos, Silphy dispara alerta roja a Ale y Lucas.
+- **Quit Number & Supervivencia Autónoma:** Si los ingresos operativos no superan los costos fijos antes de que se acabe el runway, activar de inmediato plan de contingencia comercial con Linia & Pursena.
+
 ---
 
 ## ⚡ Habilidades & Skills Operativas Clave
 - `profit-first-accounting`
 - `never-split-the-difference-negotiation`
 - `cashflow-forecasting-7-15-30`
+- `runway-survival-math`
+- `micro-loss-detection-leakage`
 - `scoring-morosidad-clubes`
 - `scripts-cobranza-asertiva`
 - `regimen-tributario-arca`
